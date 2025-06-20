@@ -15,7 +15,10 @@ dotenv.config();
 const app = express();
 
 app.use(cors({
-    origin: 'https://url-shortner-frontend2.onrender.com/',
+    origin: [
+        'http://localhost:5173',
+        'https://url-shortner-frontend2.onrender.com'
+    ],
     credentials: true
 }));
 app.use(express.json());

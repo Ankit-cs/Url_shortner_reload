@@ -11,7 +11,7 @@ const UserUrl = () => {
   })
 
   const [copiedId, setCopiedId] = useState(null)
-  const backendUrl = 'https://url-shortner-backend-ew7x.onrender.com'
+  const backendUrl = import.meta.env.VITE_BACKEND_URL || 'http://localhost:3000'
 
   const handleCopy = (url, id) => {
     navigator.clipboard.writeText(url)
