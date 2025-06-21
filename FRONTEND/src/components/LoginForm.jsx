@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { loginUser } from '../api/user.api';
 import {useDispatch, useSelector} from 'react-redux';
 import { login } from '../store/slice/authSlice.js';

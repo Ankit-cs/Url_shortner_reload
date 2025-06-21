@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import { useState, useEffect } from 'react'
 import LoginForm from '../components/LoginForm'
 import RegisterForm from '../components/RegisterForm'
 import { useSearch } from '@tanstack/react-router'
