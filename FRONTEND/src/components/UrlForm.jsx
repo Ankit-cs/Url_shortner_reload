@@ -13,7 +13,23 @@ const UrlForm = () => {
   const [customSlug, setCustomSlug] = useState("")
   const {isAuthenticated} = useSelector((state) => state.auth)
 
+  const validateUrl = (value) => {
+    if (!value) return 'We\'ll need a valid URL, like "super-long-link.com/shorten-it"';
+    try {
+      new URL(value.startsWith('http') ? value : `http://${value}`);
+      return '';
+    } catch {
+      return 'We\'ll need a valid URL, like "super-long-link.com/shorten-it"';
+    }
+  };
+
   const handleSubmit = async () => {
+    const validationError = validateUrl(url);
+    if (validationError) {
+      setError(validationError);
+      return;
+    }
+
     try{
       const shortUrl = await createShortUrl(url, isAuthenticated ? customSlug : null)
       setShortUrl(shortUrl)
@@ -57,7 +73,7 @@ const UrlForm = () => {
         >Shorten URL
         </button>
          {error && (
-          <div className="mt-4 p-3 bg-red-100 text-red-700 rounded-md">
+          <div className="mt-4 p-3 bg-orange-100 text-orange-600 rounded-md">
             {error}
           </div>
         )}
